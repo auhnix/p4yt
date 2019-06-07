@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>penny for ur thoughts</title>
+    <link rel='shortcut icon' href='https://img.icons8.com/dusk/100/000000/expensive.png'/>
+  </head>
+  <body>
+      <form action='/' method='post'>
+          <input placeholder='name' name='name'>
+          <input placeholder='thoughts?' name='post'>
+          <input type='submit' value='submit'>
+      </form>
+      {% for post in posts %}
+      <div class='post'>{{ post[1] + ': ' + post[2] }}</div>
+      {% endfor %}
+  </body>
+</html>
