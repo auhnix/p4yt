@@ -1,9 +1,9 @@
-# basic posting
-simple posting system made w/python, sqlite.
+# penny for your thoughts
+simple posting system made w/python, flask, & sqlite.
 used john fisher's tutorial to get started with this (https://www.youtube.com/watch?v=GjJbaolBPAY).
 
 ## wishlist
-- [ ] stylize (possibly using minimize)
+- [ ] stylize (materialize?)
 - [ ] basic user auth
 - [ ] post deletion
 - [ ] commenting
