@@ -4,6 +4,9 @@ used john fisher's tutorial to get started with this (https://www.youtube.com/wa
 
 ## wishlist
 - [ ] stylize (materialize?)
+- [ ] timestamps
 - [ ] basic user auth
 - [ ] post deletion
 - [ ] commenting
+- [ ] archives (general)
+- [ ] archives (by user)

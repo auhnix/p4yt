@@ -3,16 +3,30 @@ from os import path
 
 ROOT = path.dirname(path.relpath((__file__)))
 
-def create_post(name, content):
-    con = sql.connect(path.join(ROOT, 'data.db'))
-    cur = con.cursor()
+def createpost(name, content):
+    conn = sql.connect(path.join(ROOT, 'data.db'))
+    cur = conn.cursor()
     cur.execute('insert into posts (name, content) values(?, ?)', (name, content))
-    con.commit()
-    con.close()
+    conn.commit()
+    conn.close()
 
-def get_posts():
-    con = sql.connect(path.join(ROOT, 'data.db'))
-    cur = con.cursor()
+def getposts():
+    conn = sql.connect(path.join(ROOT, 'data.db'))
+    cur = conn.cursor()
     cur.execute('select * from posts')
     posts = cur.fetchall()
     return posts
+
+def reset():
+    conn = sql.connect(path.join(ROOT, 'data.db'))
+    cur = conn.cursor()
+    cur.execute('drop table posts')
+    makenew = """
+                    create table posts (
+                    tstamp datetime not null,
+                    name text not null,
+                    content text not null
+                    );"""
+    cur.execute(makenew)
+    conn.commit()
+    conn.close()

@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: 'Ubuntu', serif;
   background-color: rgb(119, 129, 92);
+  padding-bottom: 3%;
 }
 
 nav {
@@ -12,8 +13,8 @@ nav {
   width: 100%;
   overflow: hidden;
   position: fixed;
-  background-color: rgb(255, 255, 255, .4);
-  box-shadow: 0px 1px 40px 5px rgb(0, 0, 0, .2);
+  background-color: rgb(40, 40, 40, .9);
+  box-shadow: 0px 1px 40px 5px rgb(0, 0, 0, .6);
 }
 
 form {
@@ -42,10 +43,17 @@ li a {
   text-align: center;
   padding: 14px 14px;
   text-decoration: none;
+  transition: all 150ms linear;
+  border-bottom: 1px solid transparent;
 }
 
 li a:hover {
-  background-color: rgb(255, 255, 255, .3);
+  background-color: rgb(255, 255, 255, .05);
+  border-color: white;
+}
+
+a {
+  color: inherit;
 }
 
 .post {
@@ -54,4 +62,39 @@ li a:hover {
   margin-right: 2em;
   padding: 1em;
   background-color: rgb(255,255,255, 0.2);
+  position: relative;
+}
+
+.posthead {
+  font-style: italic;
+  font-size: 1em;
+}
+
+.date {
+  position: absolute;
+  bottom: .5em;
+  right: .5em;
+  background-color: rgb(255, 255, 255, .3);
+  padding: 10px;
+}
+
+.name {
+  font-weight: bold;
+  text-decoration: #333 underline;
+  transition: all 150ms linear;
+}
+
+.name:hover {
+  background-color: rgb(255, 255, 255, .3);
+  font-style: normal;
+  transform: skewY(200deg);
+}
+
+.postcon {
+  margin-left: 2%;
+}
+
+#del {
+  padding: 1em;
+  padding-top: 0;
 }

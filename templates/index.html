@@ -13,6 +13,7 @@
         <li class='right'><a href='login.html'>login</a></li>
         <li class='right'><a href='#'>archives</a></li>
         <li class='right'><a href='#'>about</a></li>
+      </ul>
     </nav>
 
     <div id='container'>
@@ -21,8 +22,19 @@
         <input placeholder='thoughts?' name='post'>
         <input type='submit' value='submit'>
       </form>
-      {% for post in posts %}
-      <div class='post'>{{ post[1] + ': ' + post[2] }}</div>
+
+      <form id='del' action='/' method='delete'>
+        <input type='submit' value='reset'>
+      </form>
+      
+      {% for post in posts | reverse %}
+      <div class='post'>
+        <p class='posthead'>
+          <span class='name'><a href='/users/{{post[1]}}'>{{ post[1] }}</a></span> said:
+        </p>
+        <p class='postcon'>"{{ post[2] }}"</p>
+        <div class='date'>{{ post[0] }}</div>
+      </div>
       {% endfor %}
     </div>
 

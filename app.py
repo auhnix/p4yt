@@ -1,23 +1,30 @@
+import datetime
 from flask import Flask, render_template, request
 from flask_cors import CORS
-from models import create_post, get_posts
+from models import *
+import time
 
 app = Flask(__name__)
 
 CORS(app)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST', 'DELETE'])
 def index():
 
     if request.method == 'GET':
-        pass 
+        pass
 
-    if request.method == 'POST':
+    elif request.method == 'POST':
+        ts = time.time()
+        timestamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M')
         name = request.form.get('name')
         post = request.form.get('post')
-        create_post(name, post)
+        createpost(timestamp, name, post)
 
-    posts = get_posts()
+    elif request.method == 'DELETE':
+        reset()
+
+    posts = getposts()
 
     return render_template('index.html', posts=posts)
 
