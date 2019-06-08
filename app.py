@@ -5,16 +5,11 @@ from models import *
 import time
 
 app = Flask(__name__)
-app.jinja_env.globals.update(getuserposts=getuserposts)
 
 CORS(app)
 
-def clean(s):
-    cleaned = ""
-    for c in s:
-        if c.isalpha():
-            clean += c
-    return cleaned
+app.jinja_env.globals.update(getuserposts=getuserposts)
+app.jinja_env.globals.update(clean=clean)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

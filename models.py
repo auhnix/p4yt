@@ -3,6 +3,13 @@ from os import path
 
 ROOT = path.dirname(path.relpath((__file__)))
 
+def clean(s):
+    cleaned = ""
+    for c in s:
+        if c.isalpha():
+            cleaned += c.lower()
+    return cleaned
+
 def createpost(timestamp, name, content):
     conn = sql.connect(path.join(ROOT, 'data.db'))
     cur = conn.cursor()
