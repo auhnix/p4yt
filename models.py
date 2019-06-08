@@ -3,10 +3,10 @@ from os import path
 
 ROOT = path.dirname(path.relpath((__file__)))
 
-def createpost(name, content):
+def createpost(timestamp, name, content):
     conn = sql.connect(path.join(ROOT, 'data.db'))
     cur = conn.cursor()
-    cur.execute('insert into posts (name, content) values(?, ?)', (name, content))
+    cur.execute('insert into posts (tstamp, name, content) values(?, ?, ?)', (timestamp, name, content))
     conn.commit()
     conn.close()
 
@@ -16,6 +16,13 @@ def getposts():
     cur.execute('select * from posts')
     posts = cur.fetchall()
     return posts
+
+def getuserposts(user):
+    conn = sql.connect(path.join(ROOT, 'data.db'))
+    cur = conn.cursor()
+    cur.execute("select * from posts where NAME='{}'".format(user))
+    userposts = cur.fetchall()
+    return userposts
 
 def reset():
     conn = sql.connect(path.join(ROOT, 'data.db'))

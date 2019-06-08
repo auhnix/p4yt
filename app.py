@@ -5,12 +5,19 @@ from models import *
 import time
 
 app = Flask(__name__)
+app.jinja_env.globals.update(getuserposts=getuserposts)
 
 CORS(app)
 
-@app.route('/', methods=['GET', 'POST', 'DELETE'])
-def index():
+def clean(s):
+    cleaned = ""
+    for c in s:
+        if c.isalpha():
+            clean += c
+    return cleaned
 
+@app.route('/', methods=['GET', 'POST'])
+def index():
     if request.method == 'GET':
         pass
 
@@ -21,12 +28,20 @@ def index():
         post = request.form.get('post')
         createpost(timestamp, name, post)
 
-    elif request.method == 'DELETE':
-        reset()
-
     posts = getposts()
-
     return render_template('index.html', posts=posts)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/users/<user>', methods=['GET'])
+def userpg(user):
+  return render_template('userpg.html', title='user details', user=user)
+
+@app.route('/refresh')
+def refresh():
+    reset()
 
 if __name__ == '__main__':
     app.run(debug=True)

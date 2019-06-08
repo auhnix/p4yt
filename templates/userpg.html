@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>penny for ur thoughts | main</title>
+    <title>penny for ur thoughts | {{ user }}</title>
     <link rel='shortcut icon' href="{{ url_for('static', filename='img/favicon.ico') }}"/>
     <link rel= 'stylesheet' type= "text/css" href= "{{ url_for('static', filename='css/style.css') }}">
 
@@ -22,7 +22,7 @@
   <body>
     <nav>
       <ul>
-        <li class='current'><a href='/'>home</a></li>
+        <li><a href='/'>home</a></li>
         <li class='right'><a href="{{ url_for('login') }}">login</a></li>
         <li class='right'><a href='#'>archives</a></li>
         <li class='right'><a href='#'>about</a></li>
@@ -30,24 +30,13 @@
     </nav>
 
     <div id='container'>
-      <form action='/' method='post'>
-        <input placeholder='name' name='name'>
-        <input placeholder='thoughts?' name='post'>
-        <input type='submit' value='submit'>
-      </form>
 
-      <form id='reset'>
-          <a href=# id=test><button class='btn btn-default'>reset</button></a>
-          <input type='submit' value='submit'>
-      </form>
-
-      {% for post in posts | reverse %}
+      {% for post in getuserposts(user) | reverse %}
       <div class='post'>
         <p class='posthead'>
-          <span class='datename'><a href="/users/{{ post[1] }}">{{ post[1] }}</a></span> said:
+          on <span class='datename'>{{ post[0] }}</span>, ...
         </p>
         <p class='postcon'>"{{ post[2] }}"</p>
-        <div class='date'>{{ post[0] }}</div>
       </div>
       {% endfor %}
     </div>

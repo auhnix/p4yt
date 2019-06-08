@@ -17,9 +17,13 @@ nav {
   box-shadow: 0px 1px 40px 5px rgb(0, 0, 0, .6);
 }
 
-form {
+#container {
   padding: 1em;
   padding-top: 5%;
+}
+
+form {
+  padding-left: .5em;
 }
 
 ul {
@@ -31,6 +35,36 @@ ul {
 
 li {
   float: left;
+  transition: all 150ms linear;
+}
+
+li:hover {
+  background-color: rgb(255, 255, 255, .05);
+}
+
+li:after {
+  content: '';
+  width: 0%;
+  height: 1px;
+  display: block;
+  background: white;
+  transition: 300ms;
+}
+
+li:hover:after {
+  width: 100%;
+}
+
+.current {
+  background-color: rgb(255, 255, 255, .05);
+}
+
+.current:after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  display: block;
+  background: white;
 }
 
 .right {
@@ -38,18 +72,11 @@ li {
 }
 
 li a {
-  display: block;
+  display: inline-block;
   color: white;
   text-align: center;
   padding: 14px 14px;
   text-decoration: none;
-  transition: all 150ms linear;
-  border-bottom: 1px solid transparent;
-}
-
-li a:hover {
-  background-color: rgb(255, 255, 255, .05);
-  border-color: white;
 }
 
 a {
@@ -57,10 +84,8 @@ a {
 }
 
 .post {
-  margin-bottom: .4em;
-  margin-left: 2em;
-  margin-right: 2em;
-  padding: 1em;
+  margin: 1em 4em 1em 4em;
+  padding: .6em;
   background-color: rgb(255,255,255, 0.2);
   position: relative;
 }
@@ -76,25 +101,24 @@ a {
   right: .5em;
   background-color: rgb(255, 255, 255, .3);
   padding: 10px;
+  float: right;
 }
 
-.name {
+.datename {
   font-weight: bold;
   text-decoration: #333 underline;
   transition: all 150ms linear;
 }
 
-.name:hover {
+.datename:hover {
   background-color: rgb(255, 255, 255, .3);
   font-style: normal;
-  transform: skewY(200deg);
 }
 
 .postcon {
   margin-left: 2%;
 }
 
-#del {
-  padding: 1em;
-  padding-top: 0;
+#reset {
+  padding-top: 1em;
 }

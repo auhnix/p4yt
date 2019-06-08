@@ -3,10 +3,10 @@ simple posting system made w/python, flask, & sqlite.
 used john fisher's tutorial to get started with this (https://www.youtube.com/watch?v=GjJbaolBPAY).
 
 ## wishlist
-- [ ] stylize (materialize?)
-- [ ] timestamps
+- [x] stylize (materialize?)
+- [x] timestamps
 - [ ] basic user auth
 - [ ] post deletion
 - [ ] commenting
 - [ ] archives (general)
-- [ ] archives (by user)
+- [x] archives (by user)
