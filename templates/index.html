@@ -30,6 +30,7 @@
     </nav>
 
     <div id='container'>
+
       <form action='/' method='post'>
         <input placeholder='name' name='name'>
         <input placeholder='thoughts?' name='post'>
@@ -44,12 +45,13 @@
       {% for post in posts | reverse %}
       <div class='post'>
         <p class='posthead'>
-          <span class='datename'><a href="/users/{{ clean(post[1]) }}">{{ post[1] }}</a></span> said:
+          <span class='datename'><a href="/users/{{ clean(post[1])[1] }}">{{ post[1] }}</a></span> said:
         </p>
         <p class='postcon'>"{{ post[2] }}"</p>
         <div class='date'>{{ post[0] }}</div>
       </div>
       {% endfor %}
+
     </div>
 
   </body>

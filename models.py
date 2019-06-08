@@ -8,7 +8,7 @@ def clean(s):
     for c in s:
         if c.isalpha():
             cleaned += c.lower()
-    return cleaned
+    return tuple((cleaned, s))
 
 def createpost(timestamp, name, content):
     conn = sql.connect(path.join(ROOT, 'data.db'))

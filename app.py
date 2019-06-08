@@ -5,7 +5,6 @@ from models import *
 import time
 
 app = Flask(__name__)
-
 CORS(app)
 
 app.jinja_env.globals.update(getuserposts=getuserposts)
